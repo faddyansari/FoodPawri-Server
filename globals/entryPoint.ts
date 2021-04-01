@@ -14,6 +14,7 @@ import { Db } from "mongodb";
 import { Roles } from "../models/roleModel";
 
 const cors = require('cors');
+import helmet from "helmet";
 const compression = require('compression');
 
 
@@ -129,7 +130,7 @@ class FoodPawriEntryPoint {
   
       this.application.use(compression());
       this.application.use(cors({ credentials: true, origin: "*" }));
-  
+      this.application.use(helmet());
       this.application.use('/api/roles', Routes.RolesRoutes);
       
   
